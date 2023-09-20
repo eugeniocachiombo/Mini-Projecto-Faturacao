@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/estilo.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="stylesheet" href="assets/bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all6.css">
+    <script src="assets/js/alerta.js"></script>
+    <script src="assets/jquery/jquery.js"></script>
+    <title>Início</title>
+</head>
+
+<body>
+
+    <header>
+        <i class="fa-solid fa-coins pt-5" style="font-size: 100px; text-align: center; padding-top: 10px"></i>
+        <h1>EG Comércios de Produtos</h1><br>
+        <div class="row" style=" padding: 10px">
+            <input type="checkbox" name="" id="check_menu">
+            <label id="fa-bars" for="check_menu" class="col " style="text-align: left; width:100px; cursor: pointer">
+                <i class="fa-solid fa-bars p-1 px-3 pe-3"></i>
+            </label>
+            <label id="fa-close" for="check_menu" class="col " style="text-align: left; width:100px; cursor: pointer">
+                <i class="fa-solid fa-close p-1 px-3 pe-3"></i>
+            </label>
+
+            <div class="col d-flex justify-content-end align-items-center">
+                <span class="text-end" id="nome_utilizdador" style="display: none"></span>
+            </div>
+
+            <div class="row" id="lista_menu">
+                <center>
+                    <ul type="none" class="pt-2" style="margin-left: 10px">
+                        <li><button class="form-control" onClick="ViewCadastrar()"
+                                id="view_cadastrar">Cadastrar</button>
+                        </li>
+                        <li><button class="form-control" onClick="ViewSessao()" id="view_sessao">Iniciar Sessão</button>
+                        </li>
+                        <li><button class="form-control" onClick="ViewProduto()" id="view_produto">Produtos</button>
+                        </li>
+                        <li><button class="form-control" onClick="ViewCadastrarProduto()"
+                                id="view_cadastrar_produto">Cadastrar Produtos</button>
+                        </li>
+                        <li><button class="form-control" onClick="ViewVenderProduto()" id="view_vender_produto">Vender
+                                Produtos</button>
+                        <li><button class="form-control" onClick="ViewProdutosVendidos()"
+                                id="view_produtos_vendidos">Produtos Vendidos</button>
+                        </li>
+                    </ul>
+                </center>
+            </div>
+        </div>
+    </header>
+
+    <main class="row d-flex justify-content-center align-items-center">
+        <div class="col-6 d-flex justify-content-center align-items-center">
+            <div class="col text-center" id="info_inicial" style="display: none">
+                <h1>Esta opção requer inicio de sessão</h1>
+            </div>
+
+            <div class="col text-center" id="form_sessao" style="display: none">
+                <i class="fa-solid fa-user pb-2"
+                    style="color: #900; font-size: 100px; text-align: center; padding-top: 10px"></i>
+
+                <legend>
+                    <h4>Autenticação</h4>
+                    <hr>
+                </legend>
+
+                <label style="text-align: left; width: 100%" for="codigo_acesso_sessao"><b>Código de Acesso:</b></label>
+                <br>
+                <input class="form-control" type="password" name="codigo_acesso_sessao" id="codigo_acesso_sessao"> <br>
+
+                <input style="background: #299; color: white" class="form-control" type="button" name="btn_autenticar"
+                    id="btn_autenticar" value="Autenticar" onclick="Autenticar()">
+                <hr>
+
+                <p>
+                    Necessita de uma conta
+                    <a href="">Cadastrar</a>
+                </p>
+            </div>
+
+            <div class="col text-center" id="form_cadastrar_utilizador" style="display: none">
+                <i class="fa-solid fa-user pb-2"
+                    style="color: #900; font-size: 100px; text-align: center; padding-top: 10px"></i>
+                <legend>
+                    <h4>Formulário de Cadastro</h4>
+                    <hr>
+                </legend>
+                <label style="text-align: left; width: 100%" for="nome"><b>Nome:</b></label> <br>
+                <input class="form-control" type="text" name="nome" id="nome"> <br>
+
+                <label style="text-align: left; width: 100%" for="sobrenome"><b>Sobrenome:</b></label> <br>
+                <input class="form-control" type="text" name="sobrenome" id="sobrenome"> <br>
+
+                <label style="text-align: left; width: 100%" for="genero"><b>Gênero:</b></label> <br>
+                <select class="form-control" name="" id="genero">
+                    <option value="">Selecione.......</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select> <br>
+
+                <label style="display: none; text-align: left; width: 100%" for="cargo"><b>Cargo:</b></label> 
+                <select class="form-control" style="display: none;" name="" id="cargo">
+                    <option value="">Selecione.......</option>
+                    <option value="Administrador">Administrador</option>
+                    <option selected value="Funcionario">Funcionario</option>
+                </select> 
+
+                <label style="text-align: left; width: 100%" for="codigo_acesso_cadastro"><b>Código de
+                        Acesso:</b></label>
+                <br>
+                <input class="form-control" type="password" name="codigo_acesso_cadastro" id="codigo_acesso_cadastro">
+                <br>
+
+                <input style="background: #299; color: white" class="form-control" type="button"
+                    name="btn_cadastrar_utilizador" id="btn_cadastrar_utilizador" value="Cadastrar"
+                    onclick="CadastrarUtilizador()">
+                <hr>
+
+                <p>
+                    Já tem uma conta
+                    <a href="">Iniciar Sessao</a>
+                </p>
+            </div>
+
+            <div class="col text-center" id="form_cadastrar_produto" style="display: none">
+                <i class="fa-solid fa-cart-plus pb-2"
+                    style="color: #900; font-size: 100px; text-align: center; padding-top: 10px"></i>
+                <legend>
+                    <h4>Formulário de Produto</h4>
+                    <hr>
+                </legend>
+                <label style="text-align: left; width: 100%" for="nome_produto"><b>Nome do Produto:</b></label> <br>
+                <input class="form-control" type="text" name="nome_produto" id="nome_produto"> <br>
+
+                <label style="text-align: left; width: 100%" for="preco"><b>Preço:</b></label> <br>
+                <input class="form-control" onblur="BlurPreco()" onfocus="FocusPreco()" onkeyup="TratarDigitoPreco()"
+                    type="text" name="preco" id="preco">
+                <br>
+
+                <label style="text-align: left; width: 100%" for="quantidade"><b>Quantidade:</b></label> <br>
+                <select class="form-control" name="" id="quantidade">
+                    <option value="">Selecione.......</option>
+                </select> <br>
+
+                <input style="background: #299; color: white" class="form-control" type="button"
+                    name="btn_cadastrar_produto" id="btn_cadastrar_produto" value="Cadastrar Produto"
+                    onclick="CadastrarProduto()">
+                <hr>
+            </div>
+
+            <div class="col text-center " id="form_produto" style="display: block;">
+
+                <i class="fa-solid fa-cart-shopping pb-2"
+                    style="color: #900; font-size: 100px; text-align: center; padding-top: 10px"></i>
+                <legend>
+                    <h4>Total de Produtos</h4>
+                    <hr>
+                </legend>
+
+                <table id="table_produtos" class="" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th class="bg-secondary text-white" style="border: 1px solid #222;">idProduto</th>
+                            <th class="bg-secondary text-white" style="border: 1px solid #222;">Nome do Produto</th>
+                            <th class="bg-secondary text-white" style="border: 1px solid #222;">Preço</th>
+                            <th class="bg-secondary text-white" style="border: 1px solid #222;">Quantidade</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tb_body_produtos">
+                        <p id="info_tbl_produtos"></p>
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+
+            <div class="col text-center" id="form_vender_produto" style="display: none">
+                <i class="fa-solid fa-cart-arrow-down pb-2"
+                    style="color: #900; font-size: 100px; text-align: center; padding-top: 10px"></i>
+                <legend>
+                    <h4>Formulário de Venda</h4>
+                    <hr>
+                </legend>
+                <label style="text-align: left; width: 100%" for="nome_comprador"><b>Nome do Comprador:</b></label> <br>
+                <input class="form-control" type="text" name="nome_comprador" id="nome_comprador"> <br>
+
+                <label style="text-align: left; width: 100%" for="produto_vender"><b>Produto:</b></label> <br>
+                <select class="form-control" name="produto_vender" id="produto_vender">
+                    <option value="">Selecione.......</option>
+                    <option value="1">Teste:2000</option>
+                    <option value="2">Teste:2000</option>
+                </select> <br>
+
+                <label style="text-align: left; width: 100%" for="quantidade_vender"><b>Quantidade:</b></label> <br>
+                <select class="form-control" name="quantidade_vender" id="quantidade_vender">
+                    <option value="">Selecione.......</option>
+                </select> <br>
+
+                <input style="background: #299; color: white" class="form-control" type="button"
+                    name="btn_vender_produto" id="btn_vender_produto" value="Vender Produto" onclick="VenderProduto()">
+                <hr>
+            </div>
+
+            <div class="col text-center " id="form_produtos_vendidos" style="display: none;">
+                <i class="fa-solid fa-cart-shopping pb-2"
+                    style="color: #900; font-size: 100px; text-align: center; padding-top: 10px"></i>
+                <legend>
+                    <h4>Total de Produtos Vendidos</h4>
+                    <hr>
+                </legend>
+
+                <table id="table_produtos_vendidos" class="" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th class="bg-secondary text-white" style="border: 1px solid #222;">idVenda</th>
+                            <th class="bg-secondary text-white" style="border: 1px solid #222;">Nome do Comprador</th>
+                            <th class="bg-secondary text-white" style="border: 1px solid #222;">Nome do Produto</th>
+                            <th class="bg-secondary text-white" style="border: 1px solid #222;">Preço</th>
+                            <th class="bg-secondary text-white" style="border: 1px solid #222;">Quantidade</th>
+                            <th class="bg-secondary text-white" style="border: 1px solid #222;">Total Pago</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tb_body_produtos_vendidos">
+                        <p id="info_tbl_produtos_vendidos"></p>
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row d-block justify-content-center pb-5">
+            <div class="col d-flex justify-content-center">
+                <h1>Saldo da Empresa : </h1>
+            </div>
+
+            <div class="col d-flex justify-content-center align-items-center">
+                <h1><span id="mostrar_saldo_empresa">0</span>,00 KZ</h1>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="row d-block d-md-flex" style="width: 100%; font-size: 14px">
+
+            <!--LOCALIZAÇÃO-->
+            <div class="col pt-2" style="height: auto;">
+                <p class="h6 text-left text-md-center">
+                    <b>Localização</b>
+                    <hr>
+                </p>
+                <i class="fas fa-map-marker-alt" style="font-size:24px; margin-right: 20px;"></i>
+                <div class="col text-left text-justify">
+                    Província de Luanda <br>
+                    Município do Cazenga, bairro Hoji-Yá-Henda
+                </div>
+                <hr>
+
+            </div>
+
+            <!--CONTACTOS-->
+            <div class="col pt-2" style="height: auto;">
+                <p class="h6 text-left text-md-center "><b>Contactos</b>
+                    <hr>
+                </p>
+
+                <!--TELEFONE-->
+                <div class="col d-flex justify-content-left align-items-center">
+                    <i class="fas fa-phone-alt" style="font-size:24px; margin-right: 20px"></i> <b> (+244) 921439849
+                    </b>
+                </div> <br>
+
+                <!--EMAIL EMPRESA-->
+                <div class="col d-flex justify-content-left align-items-center">
+                    <i class="fas fa-envelope" style="font-size:24px; margin-right: 20px"></i>
+                    <b>trckmusik@gmail.com </b>
+                </div> <br>
+
+                <!--EMAIL PROPRIETÁRIO-->
+                <div class="col d-flex justify-content-left align-items-center">
+                    <i class="fas fa-envelope"
+                        style="font-size:24px; margin-right: 20px"></i><b>eugeniocachiombo@gmail.com
+                    </b>
+                </div> <br>
+
+                <!--Whatsapp-->
+                <div class="col d-flex justify-content-left align-items-center">
+                    <i class="fab fa-whatsapp" style="font-size:24px; margin-right: 20px"></i> <b>(+244) 921439849
+                    </b>
+                </div> <br>
+
+                <!--Facebook-->
+                <div class="col d-flex justify-content-left align-items-center">
+                    <i class="fab fa-facebook" style="font-size:24px; margin-right: 20px"></i><b>Trck Musik
+                        Oficial</b>
+
+                </div> <br>
+                <hr>
+            </div>
+
+            <!--DIREITOS-->
+            <div class="row text-center pt-5" >
+                <p>© EG Comércios 2023. Todos os direitos reservados.</p>
+            </div>
+            <hr>
+        </div>
+    </footer>
+
+    <script src="assets/js/config_menu.js"></script>
+    <script src="assets/js/utilizadorOn.js"></script>
+    <script src="assets/js/cadastro_utilizador.js"></script>
+    <script src="assets/js/produto.js"></script>
+    <script src="assets/js/tabela_produtos.js"></script>
+    <script src="assets/js/cadastro_produto.js"></script>
+    <script src="assets/js/vender_produto.js"></script>
+    <script src="assets/js/tabela_produtos_vendidos.js"></script>
+    <script src="assets/js/autenticar.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+li{
+    margin: 10px;
+}
+
+li:hover button{
+    background: #299;
+    color: white;
+}
+
+.fa-bars{
+    border: 3px solid white; 
+    font-size: 50px; text-align: center; 
+    border-radius: 50px;
+}
+
+.fa-close{
+    border: 3px solid white; 
+    font-size: 50px; text-align: center; 
+    border-radius: 50px;
+    display: none;
+}
+
+#fa-close {
+    display: none;
+}
+
+#check_menu {
+    display: none;
+}
+
+#lista_menu {
+    display: none;
+}
+
+#check_menu:checked ~ #lista_menu {
+    display: block;
+}
+
+#check_menu:checked ~ #fa-close {
+    display: block;
+}
+
+#check_menu:checked ~ #fa-bars {
+    display: none;
+}
